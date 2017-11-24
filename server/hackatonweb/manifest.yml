@@ -1,0 +1,4 @@
+applications:
+- name: kareweb
+  memory: 1G
+  command: npm start
