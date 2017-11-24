@@ -18,7 +18,7 @@ export default class Main extends React.Component{
 		   <i className="fa fa-check fa-fw w3-center" style={{color: "#086A87"}}></i>
 		   <h4>Completado!</h4>
 		 </div>):(<div>
-		   <i className="fa fa-hand-o-down fa-fw w3-center" style={{color: "#086A87"}}></i>
+		   <i className="fa fa-dot-circle-o fa-fw w3-center" style={{color: "#086A87"}}></i>
 		   <h4>Pinchame</h4>
 		 </div>)}
 	      </button>
@@ -39,7 +39,7 @@ export default class Main extends React.Component{
 		   <i className="fa fa-check fa-fw w3-center" style={{color: "#086A87"}}></i>
 		   <h4>Completado!</h4>
 		 </div>):(<div>
-		   <i className="fa fa-hand-o-down fa-fw w3-center" style={{color: "#086A87"}}></i>
+		   <i className="fa fa-dot-circle-o fa-fw w3-center" style={{color: "#086A87"}}></i>
 		   <h4>Pinchame</h4>
 		 </div>)}
 	      </button>
@@ -58,7 +58,7 @@ export default class Main extends React.Component{
 		   <i className="fa fa-check fa-fw w3-center" style={{color: "#086A87"}}></i>
 		   <h4>Completado!</h4>
 		 </div>):(<div>
-		   <i className="fa fa-hand-o-down fa-fw w3-center" style={{color: "#086A87"}}></i>
+		   <i className="fa fa-dot-circle-o fa-fw w3-center" style={{color: "#086A87"}}></i>
 		   <h4>Pinchame</h4>
 		 </div>)}
 	      </button>

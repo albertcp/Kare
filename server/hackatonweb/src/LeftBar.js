@@ -1,6 +1,9 @@
 import React from 'react';
 
-export default () => (
+export default ({
+  logged_in,
+  picture,
+}) => (
   <div style={{
     margin: '1em',
   }} className="w3-card w3-round w3-white">
@@ -8,7 +11,7 @@ export default () => (
       <br/>
       <p className="w3-left w3-container">
 	<img
-	    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/PabloJavkin2.jpg/250px-PabloJavkin2.jpg"
+	    src={picture}
 	    className="w3-circle "
 	    style={{
 	      height:"106px",
@@ -17,9 +20,9 @@ export default () => (
 	    alt="Avatar"
 	/>
       </p>	 
-      <h4 className="w3-left-align ">Profile</h4>
-      <p className="w3-left-align ">  Luis Flores</p>
-      <p className="w3-left-align ">  05/07/1975</p>
+      <h4 className="w3-left-align ">Perfil</h4>
+      <p className="w3-left-align ">{logged_in}</p>
+      <p className="w3-left-align ">05/07/1975</p>
     </div>
     <br/>
   </div>
