@@ -4,13 +4,13 @@ export default () => (
     <div style={{padding: '1em', textAlign: 'left'}} className="w3-row">
     <div className="w3-card w3-round w3-white">
       <div className="w3-container w3-padding">	
-	<br/><h4>Calendar</h4>
+	<br/><h4>Calendario</h4>
 	<hr/>
-	<b><p>Medical appointment</p></b>
+	<b><p>Cita especialista</p></b>
 	<p>22/12/2017 - 16:30</p>
 	<hr/>
-	<b><p>Shoulder exercise</p></b>
-	<p>Today</p>
+	<b><p>Ejercicio de hombros</p></b>
+	<p>Hoy</p>
       </div>
     </div>
   </div>

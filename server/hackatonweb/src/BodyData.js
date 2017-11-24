@@ -8,6 +8,9 @@ const MAX_Y = 1.2;
 const WIDTH = 650;
 const HEIGHT = 600;
 
+const dot = (v1, v2) => v1.reduce((count, elem, index) => count + elem * v2[index],0);
+const norm = v => Math.sqrt(v.reduce((count, elem) => count + Math.pow(elem, 2),0));
+
 const adjustPoint = (positions) => {
   const x = positions[0].x;
   const y = positions[0].y;
@@ -79,6 +82,36 @@ export default class BodyData extends React.Component {
 		})
 	      ))}
 	   </svg>
+	   <div style={{position: 'absolute'}}>
+	     {body_data && body_data.user && body_data.user.map(u => {
+		const elbow = u && u.bodyParts && u.bodyParts
+							.find(p => p.name === 'ElbowLeft')
+							.positions[0];
+		const shoulder = u && u.bodyParts && u.bodyParts
+							   .find(p => p.name === 'WristLeft')
+							   .positions[0];
+		const wrist = u && u.bodyParts && u.bodyParts
+							.find(p => p.name === 'ShoulderLeft')
+							.positions[0];
+		const elbow_shoulder = [
+		  shoulder.x-elbow.x,
+		  shoulder.y-elbow.y,
+		  shoulder.z-elbow.z,
+		];
+		const elbow_wrist = [
+		  wrist.x-elbow.x,
+		  wrist.y-elbow.y,
+		  wrist.z-elbow.z,
+		];
+
+		const alfa = Math.acos(dot(elbow_shoulder, elbow_wrist)/(norm(elbow_shoulder)*norm(elbow_wrist)))
+		return (
+		  <div>
+		    Ángulo codo: {(alfa * 180) / Math.PI}º
+		  </div>
+		);
+	      })}
+	   </div>
       </div>
     );
   }
