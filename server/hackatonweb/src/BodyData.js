@@ -82,32 +82,53 @@ export default class BodyData extends React.Component {
 		})
 	      ))}
 	   </svg>
-	   <div style={{position: 'absolute'}}>
+	   <div style={{position: 'absolute', width: '100%'}}>
 	     {body_data && body_data.user && body_data.user.map(u => {
-		const elbow = u && u.bodyParts && u.bodyParts
+		const elbow_i = u && u.bodyParts && u.bodyParts
 							.find(p => p.name === 'ElbowLeft')
 							.positions[0];
-		const shoulder = u && u.bodyParts && u.bodyParts
+		const shoulder_i = u && u.bodyParts && u.bodyParts
 							   .find(p => p.name === 'WristLeft')
 							   .positions[0];
-		const wrist = u && u.bodyParts && u.bodyParts
+		const wrist_i = u && u.bodyParts && u.bodyParts
 							.find(p => p.name === 'ShoulderLeft')
 							.positions[0];
-		const elbow_shoulder = [
-		  shoulder.x-elbow.x,
-		  shoulder.y-elbow.y,
-		  shoulder.z-elbow.z,
+		const elbow_d = u && u.bodyParts && u.bodyParts
+							.find(p => p.name === 'ElbowRight')
+							.positions[0];
+		const shoulder_d = u && u.bodyParts && u.bodyParts
+							   .find(p => p.name === 'WristRight')
+							   .positions[0];
+		const wrist_d = u && u.bodyParts && u.bodyParts
+							.find(p => p.name === 'ShoulderRight')
+							.positions[0];
+		const elbow_shoulder_i = [
+		  shoulder_i.x-elbow_i.x,
+		  shoulder_i.y-elbow_i.y,
+		  shoulder_i.z-elbow_i.z,
 		];
-		const elbow_wrist = [
-		  wrist.x-elbow.x,
-		  wrist.y-elbow.y,
-		  wrist.z-elbow.z,
+		const elbow_wrist_i = [
+		  wrist_i.x-elbow_i.x,
+		  wrist_i.y-elbow_i.y,
+		  wrist_i.z-elbow_i.z,
 		];
-
-		const alfa = Math.acos(dot(elbow_shoulder, elbow_wrist)/(norm(elbow_shoulder)*norm(elbow_wrist)))
+		const elbow_shoulder_d = [
+		  shoulder_d.x-elbow_d.x,
+		  shoulder_d.y-elbow_d.y,
+		  shoulder_d.z-elbow_d.z,
+		];
+		const elbow_wrist_d = [
+		  wrist_d.x-elbow_d.x,
+		  wrist_d.y-elbow_d.y,
+		  wrist_d.z-elbow_d.z,
+		];
+		
+		const alfai = Math.acos(dot(elbow_shoulder_i, elbow_wrist_i)/(norm(elbow_shoulder_i)*norm(elbow_wrist_i)))
+		const alfad = Math.acos(dot(elbow_shoulder_d, elbow_wrist_d)/(norm(elbow_shoulder_d)*norm(elbow_wrist_d)))
 		return (
-		  <div>
-		    Ángulo codo: {(alfa * 180) / Math.PI}º
+		  <div style={{display: 'flex', width: '100%'}}>
+		    <div style={{flex: 1}}>Ángulo codo izq.: {(alfai * 180) / Math.PI}º</div>
+		    <div style={{flex: 1}}>Ángulo codo der.: {(alfad * 180) / Math.PI}º</div>
 		  </div>
 		);
 	      })}

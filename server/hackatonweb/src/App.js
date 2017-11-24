@@ -20,6 +20,14 @@ class App extends Component {
       speech: null,
     };
   };
+  analyseText = (str) => {
+    this.setState({expr:null});
+    this.ws.send(JSON.stringify({
+      type: 'TONE_ANALYZER',
+      payload: str,
+    }));
+}
+
   requestTts = (str) => {
     this.setState({speech:null});
     this.ws.send(JSON.stringify({
@@ -51,6 +59,12 @@ class App extends Component {
 	case 'IMAGE_CLASSIFY_RESPONSE':
 	  this.setState({
 	    logged_in: payload,
+	  });
+	  return true;
+	case 'TONE_ANALYZER_RESPONSE':
+	  debugger;
+	  this.setState({
+	    expr: payload,
 	  });
 	  return true;
 	case 'VOICE_RECOGNITION_RESPONSE':
@@ -104,7 +118,7 @@ class App extends Component {
 	    <Main ref='main' body_data={this.state.body_data} tts={this.requestTts}/>
 	  </div>
 	  <div style={{backgroundColor: '#EFF3FB', height: '100vh', flex: 3}}>
-	    <RightBar/>
+	    <RightBar analyseText={this.analyseText}/>
 	  </div>
 	</div>
       );
