@@ -152,7 +152,7 @@ export default class Main extends React.Component{
 	      </button>
 	    </div>
 	  ),
-	  onClick: () => {debugger;this.setState({view: 'exercises'})},
+	  onClick: () => this.setState({view: 'exercises'}),
 	}];
     }
   }
@@ -168,11 +168,13 @@ export default class Main extends React.Component{
 
   componentDidUpdate(){
     if(this.state.view === 'ex1' && this.state.ex1.e1){
+      this.props.tts('Ejercicio 1 completado.');
       this.setState({
 	view: 'exercises',
 	ex1: {e1: false},
       });
     } else if (this.state.view === 'ex2' && this.state.ex2.e1 && this.state.ex2.e2){
+      this.props.tts('Ejercicio 2 completado.');
       this.setState({
 	view: 'exercises',
 	ex2: {e1: false, e2: false},
