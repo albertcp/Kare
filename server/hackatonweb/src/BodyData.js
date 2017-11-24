@@ -39,7 +39,6 @@ export default class BodyData extends React.Component {
 	)				     
 	.reduce((p,c) => p.concat(c),[]) || [];
       const box = this.props.boxes.findIndex(box => hand_positions.some(pos => inBox(box, adjustPoint(pos))));
-      console.log(box);
       this.setState({
 	selected_box: box,
 	cont_secs: this.state.selected_box === box && this.state.cont_secs + 1 || 1, 
@@ -50,6 +49,7 @@ export default class BodyData extends React.Component {
   componentDidUpdate(prevProps, prevState){
     if(this.state.selected_box !== -1 && this.state.cont_secs > 10){
       this.props.boxes[this.state.selected_box].onClick();
+      console.log(this.state.selected_box);
       this.setState({cont_secs: 0, selected_box: -1})
     }
   }
@@ -65,7 +65,7 @@ export default class BodyData extends React.Component {
 	     left: box.x * WIDTH,
 	     width: box.width * WIDTH,
 	     height: box.height * HEIGHT,
-	   }}>
+	   }} onClick={box.onClick}>
 	     {box.component}
 	   </div>
 	 ))}
